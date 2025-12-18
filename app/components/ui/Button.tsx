@@ -10,6 +10,8 @@ interface ButtonProps {
   href?: string;
   onClick?: () => void;
   className?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -19,9 +21,11 @@ export default function Button({
   href,
   onClick,
   className = "",
+  type = "button",
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 cursor-pointer";
+    "inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     primary:
@@ -40,17 +44,30 @@ export default function Button({
 
   const combinedStyles = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  const MotionComponent = href ? motion.a : motion.button;
+  if (href) {
+    return (
+      <motion.a
+        href={href}
+        onClick={onClick}
+        className={combinedStyles}
+        whileHover={disabled ? undefined : { scale: 1.02 }}
+        whileTap={disabled ? undefined : { scale: 0.98 }}
+      >
+        {children}
+      </motion.a>
+    );
+  }
 
   return (
-    <MotionComponent
-      href={href}
+    <motion.button
+      type={type}
       onClick={onClick}
+      disabled={disabled}
       className={combinedStyles}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
     >
       {children}
-    </MotionComponent>
+    </motion.button>
   );
 }

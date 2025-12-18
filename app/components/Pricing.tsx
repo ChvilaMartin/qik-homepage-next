@@ -229,7 +229,7 @@ export default function Pricing() {
               {/* CTA Button */}
               <div className="mt-8">
                 <Button
-                  href="#"
+                  href={plan.isCustom ? "#" : "/signup"}
                   variant={plan.popular ? "secondary" : "primary"}
                   className="w-full"
                 >

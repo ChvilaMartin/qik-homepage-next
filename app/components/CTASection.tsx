@@ -67,7 +67,7 @@ export default function CTASection() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="mt-10"
           >
-            <Button href="#" variant="secondary" size="lg">
+            <Button href="/signup" variant="secondary" size="lg">
               Začněte zdarma
             </Button>
           </motion.div>

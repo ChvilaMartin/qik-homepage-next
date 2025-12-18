@@ -99,7 +99,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button href="#" variant="secondary" size="lg">
+              <Button href="/signup" variant="secondary" size="lg">
                 Vyzkoušet zdarma
               </Button>
             </motion.div>

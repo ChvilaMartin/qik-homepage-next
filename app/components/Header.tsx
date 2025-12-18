@@ -66,7 +66,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-4">
               <a
-                href="#"
+                href="/login"
                 className={`text-sm font-medium transition-colors duration-300 ${
                   isScrolled
                     ? "text-gray-700 hover:text-primary-600"
@@ -76,7 +76,7 @@ export default function Header() {
                 Přihlásit se
               </a>
               <Button
-                href="#"
+                href="/signup"
                 variant={isScrolled ? "primary" : "secondary"}
                 size="sm"
               >
@@ -147,10 +147,10 @@ export default function Header() {
                 ))}
               </nav>
               <div className="mt-auto pb-8 flex flex-col gap-4">
-                <Button href="#" variant="outline" size="lg" className="w-full">
+                <Button href="/login" variant="outline" size="lg" className="w-full">
                   Přihlásit se
                 </Button>
-                <Button href="#" variant="primary" size="lg" className="w-full">
+                <Button href="/signup" variant="primary" size="lg" className="w-full">
                   Vyzkoušet zdarma
                 </Button>
               </div>
