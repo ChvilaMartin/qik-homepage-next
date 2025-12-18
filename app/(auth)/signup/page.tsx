@@ -232,7 +232,12 @@ export default function SignupPage() {
                     type="text"
                     placeholder="Moje stavební firma"
                     {...register("workspace.name", {
-                      onChange: (e) => handleWorkspaceNameChange(e.target.value)
+                      onChange: (e) => {
+                        // Only allow letters (including Czech), numbers, and spaces
+                        const filtered = e.target.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ0-9\s]/g, '');
+                        e.target.value = filtered;
+                        handleWorkspaceNameChange(filtered);
+                      }
                     })}
                     className={`w-full px-4 py-3 rounded-xl border bg-gray-50 focus:bg-white transition-colors outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 ${
                       errors.workspace?.name ? "border-red-500" : "border-gray-200"
@@ -258,8 +263,9 @@ export default function SignupPage() {
                       id="workspace-slug"
                       type="text"
                       placeholder="moje-stavebni-firma"
+                      readOnly
                       {...register("workspace.slug")}
-                      className={`w-full px-4 py-3 pr-10 rounded-xl border bg-gray-50 focus:bg-white transition-colors outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 ${
+                      className={`w-full px-4 py-3 pr-10 rounded-xl border bg-gray-100 cursor-not-allowed outline-none ${
                         errors.workspace?.slug ? "border-red-500" :
                         availability.isAvailable === false ? "border-red-500" :
                         availability.isAvailable === true ? "border-green-500" : "border-gray-200"
@@ -293,24 +299,20 @@ export default function SignupPage() {
                       </div>
                     )}
                   </div>
-                  {errors.workspace?.slug && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-sm text-red-500"
-                    >
-                      {errors.workspace.slug.message}
-                    </motion.p>
-                  )}
-                  {availability.error && (
-                    <p className="text-sm text-red-500">{availability.error}</p>
-                  )}
-                  {!availability.isChecking && availability.isAvailable === false && !availability.error && (
-                    <p className="text-sm text-red-500">Tato URL adresa již není dostupná</p>
-                  )}
-                  {!availability.isChecking && availability.isAvailable === true && (
-                    <p className="text-sm text-green-600">URL adresa je dostupná</p>
-                  )}
+                  {/* Reserved space for validation messages to prevent layout shift */}
+                  <p className="text-sm min-h-[20px]">
+                    {errors.workspace?.slug ? (
+                      <span className="text-red-500">{errors.workspace.slug.message}</span>
+                    ) : availability.error ? (
+                      <span className="text-red-500">{availability.error}</span>
+                    ) : !availability.isChecking && availability.isAvailable === false ? (
+                      <span className="text-red-500">Tato URL adresa již není dostupná</span>
+                    ) : !availability.isChecking && availability.isAvailable === true ? (
+                      <span className="text-green-600">URL adresa je dostupná</span>
+                    ) : (
+                      <span className="text-transparent">.</span>
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
