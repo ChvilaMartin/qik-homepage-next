@@ -2,13 +2,12 @@
 
 import { motion } from "framer-motion";
 import SectionHeader from "./ui/SectionHeader";
-import Card from "./ui/Card";
 
 const problems = [
   {
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -28,7 +27,7 @@ const problems = [
   {
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -48,7 +47,7 @@ const problems = [
   {
     icon: (
       <svg
-        className="w-8 h-8"
+        className="w-7 h-7"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -69,34 +68,73 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section id="problem" className="py-24 md:py-32 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="problem" className="py-24 md:py-32 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-red-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <SectionHeader
           title="Problém"
           subtitle="Manuální vyplňování zpráv je ztráta času"
+          light
         />
 
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-16 grid md:grid-cols-3 gap-6 lg:gap-8">
           {problems.map((problem, index) => (
-            <Card key={index} delay={index * 0.1}>
-              <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.2, type: "spring" }}
-                  className="w-16 h-16 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-6"
-                >
-                  {problem.icon}
-                </motion.div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {problem.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {problem.description}
-                </p>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group relative"
+            >
+              {/* Card */}
+              <div className="relative h-full bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-gray-700/50 hover:border-red-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/0 to-red-500/0 group-hover:from-red-500/5 group-hover:to-transparent transition-all duration-500" />
+
+                {/* Large number */}
+                <div className="absolute -top-3 -right-2 text-8xl font-black text-gray-800/50 select-none group-hover:text-red-500/20 transition-colors duration-500">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div className="relative flex flex-col">
+                  {/* Icon with animated glow */}
+                  <motion.div
+                    initial={{ scale: 0, rotate: -10 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: index * 0.15 + 0.2,
+                      type: "spring",
+                      stiffness: 200,
+                    }}
+                    className="relative mb-6"
+                  >
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-600 text-white flex items-center justify-center shadow-lg shadow-red-500/25 group-hover:shadow-red-500/40 transition-shadow duration-500">
+                      {problem.icon}
+                    </div>
+                    {/* Pulse ring */}
+                    <div className="absolute inset-0 rounded-xl bg-red-500/20 animate-ping opacity-0 group-hover:opacity-75" style={{ animationDuration: "2s" }} />
+                  </motion.div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-red-100 transition-colors duration-300">
+                    {problem.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                    {problem.description}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div className="mt-6 h-1 w-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full group-hover:w-full transition-all duration-500" />
+                </div>
               </div>
-            </Card>
+            </motion.div>
           ))}
         </div>
       </div>
