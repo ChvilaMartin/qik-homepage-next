@@ -5,6 +5,9 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "Bash(curl:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/martinchvila/Develop/Qik/qik-homepage"
     ]
   }
 }

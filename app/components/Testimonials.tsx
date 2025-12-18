@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import SectionHeader from "./ui/SectionHeader";
 
 const testimonial = {
@@ -8,7 +9,7 @@ const testimonial = {
     "Nikdy bych nevěřil, jak moc se dá tvorba technické zprávy zjednodušit. Díky chytrému formuláři a automatickým kontrolám už netrávíme hodiny zbytečným přepisováním a opravami. Výstupy jdou rovnou na úřad bez vracení – ušetřilo nám to spoustu času i nervů.",
   author: "Ing. Tomáš Beran",
   role: "Jednatel",
-  company: "Beran Architects",
+  company: "Bez Cihel",
 };
 
 export default function Testimonials() {
@@ -50,16 +51,20 @@ export default function Testimonials() {
             </blockquote>
 
             {/* Author */}
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold text-lg">
-                {testimonial.author.charAt(0)}
-              </div>
+            <div className="mt-8 flex items-center justify-between gap-4">
               <div>
                 <div className="font-semibold text-gray-900">
                   {testimonial.author}
                 </div>
                 <div className="text-gray-600 text-sm">{testimonial.role}</div>
               </div>
+              <Image
+                width={150}
+                height={150}
+                src="/bez-cihel-logo.png"
+                alt={testimonial.company}
+                className="w-60 h-14 object-contain"
+              />
             </div>
 
             {/* Decorative elements */}
