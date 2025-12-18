@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const footerLinks = [
   { href: "#", label: "Ochrana osobních údajů" },
@@ -21,7 +22,13 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <a href="#" className="inline-block">
-              <span className="text-2xl font-bold text-white">QIK</span>
+              <Image
+                src="/logo.png"
+                alt="QIK"
+                width={80}
+                height={48}
+                className="h-10 w-auto invert"
+              />
             </a>
             <p className="mt-4 text-gray-400 max-w-sm">
               Zjednodušujeme projektovou dokumentaci ve stavebnictví

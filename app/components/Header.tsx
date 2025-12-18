@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Button from "./ui/Button";
 
 const navLinks = [
@@ -39,13 +40,15 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center">
-              <span
-                className={`text-2xl font-bold transition-colors duration-300 ${
-                  isScrolled ? "text-primary-600" : "text-white"
+              <Image
+                src="/logo.png"
+                alt="QIK"
+                width={100}
+                height={48}
+                className={`h-8 md:h-10 w-auto transition-all duration-300 ${
+                  isScrolled ? "" : "invert"
                 }`}
-              >
-                QIK
-              </span>
+              />
             </a>
 
             {/* Desktop Navigation */}
