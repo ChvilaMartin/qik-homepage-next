@@ -5,6 +5,7 @@ import SolutionSection from "./components/SolutionSection";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
+import StavbaTeaser from "./components/StavbaTeaser";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <HowItWorks />
         <Testimonials />
         <Pricing />
+        <StavbaTeaser />
         <CTASection />
       </main>
       <Footer />
