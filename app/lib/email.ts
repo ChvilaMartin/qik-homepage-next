@@ -9,10 +9,11 @@ export async function sendContactEmail(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const apiKey = process.env.POSTMARK_API_KEY;
-    const receiver = process.env.EMAIL_RECEIVER;
+    const receiver = process.env.EMAIL_SENDER;
+    const to = process.env.EMAIL_TO;
 
     if (!apiKey || !receiver) {
-      console.error("Missing environment variables: POSTMARK_API_KEY or EMAIL_RECEIVER");
+      console.error("Missing environment variables: POSTMARK_API_KEY or EMAIL_SENDER");
       return { success: false, error: "Chyba konfigurace serveru" };
     }
 
@@ -20,7 +21,7 @@ export async function sendContactEmail(
 
     await client.sendEmail({
       From: receiver, // Must be verified sender in Postmark
-      To: receiver,
+      To: to || receiver,
       ReplyTo: email, // User's email for easy replies
       Subject: `Nový dotaz z kontaktního formuláře - ${name}`,
       HtmlBody: `
