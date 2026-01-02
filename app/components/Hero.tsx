@@ -147,7 +147,7 @@ export default function Hero() {
                 </div>
                 {/* Screenshot */}
                 <Image
-                  src="/screenshot.png"
+                  src="/projects-screen.png"
                   alt="QIK aplikace"
                   width={800}
                   height={500}

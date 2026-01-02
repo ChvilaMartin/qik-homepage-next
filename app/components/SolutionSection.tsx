@@ -46,7 +46,7 @@ const features = [
     title: "Doplňování pomocí AI",
     description:
       "Zapomeňte na přepisování. QIK přečte vaše podklady a doplní informace do zprávy za vás. Získáte přesné výstupy rychleji a bez rutinní práce.",
-    image: "/screenshot.png",
+    image: "/ai-screen.png",
     imageAlt: "AI doplňování v QIK",
   },
   {
@@ -68,7 +68,7 @@ const features = [
     title: "Výstup připravený k odevzdání",
     description:
       "Hotovou zprávu si jednoduše stáhnete ve formátu .docx nebo .pdf – připravenou k odevzdání, archivaci nebo dalším úpravám.",
-    image: "/screenshot.png",
+    image: "/output-screen.png",
     imageAlt: "Export dokumentů v QIK",
   },
   {
@@ -90,7 +90,7 @@ const features = [
     title: "Automatická kontrola",
     description:
       "Zkontrolujeme za vás technickou zprávu před podáním na úřady. Ověříme platnost vyhlášek, odhalíme nesrovnalosti a předejdeme zbytečným průtahům.",
-    image: "/screenshot.png",
+    image: "/validation-screen.png",
     imageAlt: "Automatická kontrola v QIK",
   },
 ];

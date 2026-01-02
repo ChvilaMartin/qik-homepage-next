@@ -42,7 +42,7 @@ const apps = [
         desc: "Přehled progresu pro investory",
       },
     ],
-    image: "/screenshot.png",
+    image: "/vady-01.png",
     imageAlt: "Správa vad a nedodělků v QIK",
     available: true,
   },
