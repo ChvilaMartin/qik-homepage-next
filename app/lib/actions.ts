@@ -1,6 +1,7 @@
 "use server";
 
-import { CreateWorkspaceInput } from "./schemas";
+import { CreateWorkspaceInput, ContactFormInput } from "./schemas";
+import { sendContactEmail } from "./email";
 
 export async function createWorkspace(data: CreateWorkspaceInput): Promise<{ success: boolean; error?: string; workspaceUrl?: string }> {
   try {
@@ -91,5 +92,24 @@ export async function checkWorkspaceAvailability(slug: string): Promise<{ exists
   } catch (error) {
     console.error("Error checking workspace availability:", error);
     return { exists: false, error: "Chyba při ověřování dostupnosti" };
+  }
+}
+
+export async function submitContactForm(
+  data: ContactFormInput
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const result = await sendContactEmail(
+      data.name,
+      data.email,
+      data.question
+    );
+    return result;
+  } catch (error) {
+    console.error("Error in submitContactForm:", error);
+    return {
+      success: false,
+      error: "Chyba při zpracování formuláře. Zkuste to prosím znovu."
+    };
   }
 }

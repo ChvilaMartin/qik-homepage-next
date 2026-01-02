@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/#how-it-works", label: "Jak to funguje" },
   { href: "/stavba", label: "Stavba" },
   { href: "/#pricing", label: "Ceník" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
 
 interface HeaderProps {

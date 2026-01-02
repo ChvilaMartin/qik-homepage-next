@@ -4,7 +4,8 @@
       "Bash(npm install:*)",
       "Bash(ls:*)",
       "Bash(cat:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "WebSearch"
     ],
     "additionalDirectories": [
       "/Users/martinchvila/Develop/Qik/qik-homepage"

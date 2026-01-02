@@ -78,6 +78,14 @@ export default function Footer() {
                   Ceník
                 </a>
               </li>
+              <li>
+                <a
+                  href="/kontakt"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Kontakt
+                </a>
+              </li>
             </ul>
           </motion.div>
 
