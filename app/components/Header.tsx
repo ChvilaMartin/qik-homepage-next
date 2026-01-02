@@ -56,7 +56,7 @@ export default function Header({ variant = "light" }: HeaderProps) {
                 width={100}
                 height={48}
                 className={`h-8 md:h-10 w-auto transition-all duration-300 ${
-                  useDarkStyle ? "" : "invert"
+                  useDarkStyle || isMobileMenuOpen ? "" : "invert"
                 }`}
               />
             </Link>
@@ -106,7 +106,7 @@ export default function Header({ variant = "light" }: HeaderProps) {
               <div className="w-6 h-5 relative flex flex-col justify-between">
                 <span
                   className={`w-full h-0.5 transition-all duration-300 ${
-                    useDarkStyle ? "bg-gray-900" : "bg-white"
+                    useDarkStyle || isMobileMenuOpen ? "bg-gray-900" : "bg-white"
                   } ${
                     isMobileMenuOpen
                       ? "rotate-45 translate-y-2"
@@ -115,12 +115,12 @@ export default function Header({ variant = "light" }: HeaderProps) {
                 />
                 <span
                   className={`w-full h-0.5 transition-all duration-300 ${
-                    useDarkStyle ? "bg-gray-900" : "bg-white"
+                    useDarkStyle || isMobileMenuOpen ? "bg-gray-900" : "bg-white"
                   } ${isMobileMenuOpen ? "opacity-0" : ""}`}
                 />
                 <span
                   className={`w-full h-0.5 transition-all duration-300 ${
-                    useDarkStyle ? "bg-gray-900" : "bg-white"
+                    useDarkStyle || isMobileMenuOpen ? "bg-gray-900" : "bg-white"
                   } ${
                     isMobileMenuOpen
                       ? "-rotate-45 -translate-y-2"
