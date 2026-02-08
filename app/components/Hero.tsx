@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 import Button from "./ui/Button";
+import VideoModal from "./ui/VideoModal";
+
+const HERO_VIDEO_ID = "1yOJMCsQt9M";
 
 // Floating shapes component
 function FloatingShapes() {
@@ -66,6 +70,8 @@ function FloatingShapes() {
 }
 
 export default function Hero() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 overflow-hidden">
       <FloatingShapes />
@@ -102,6 +108,18 @@ export default function Hero() {
               <Button href="/signup" variant="secondary" size="lg">
                 Vyzkoušet zdarma
               </Button>
+              <button
+                type="button"
+                onClick={() => setIsVideoOpen(true)}
+                className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-sm md:text-base font-medium text-white/80 transition hover:border-white/60 hover:text-white"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition group-hover:bg-white/20">
+                  <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                <span>Jak QIK funguje</span>
+              </button>
             </motion.div>
 
             <motion.p
@@ -163,6 +181,12 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      <VideoModal
+        videoId={isVideoOpen ? HERO_VIDEO_ID : null}
+        onClose={() => setIsVideoOpen(false)}
+        title="Jak QIK funguje"
+      />
 
       {/* Scroll indicator */}
       <motion.div

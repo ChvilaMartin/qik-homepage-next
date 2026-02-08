@@ -2,9 +2,21 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, type ReactNode } from "react";
 import SectionHeader from "./ui/SectionHeader";
+import VideoModal from "./ui/VideoModal";
 
-const features = [
+type Feature = {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  videoId?: string;
+  videoLabel?: string;
+};
+
+const features: Feature[] = [
   {
     icon: (
       <svg
@@ -48,6 +60,8 @@ const features = [
       "Zapomeňte na přepisování. QIK přečte vaše podklady a doplní informace do zprávy za vás. Získáte přesné výstupy rychleji a bez rutinní práce.",
     image: "/ai-screen.png",
     imageAlt: "AI doplňování v QIK",
+    videoId: "1yOJMCsQt9M",
+    videoLabel: "Podívejte se, jak to funguje",
   },
   {
     icon: (
@@ -96,6 +110,9 @@ const features = [
 ];
 
 export default function SolutionSection() {
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  const handleClose = () => setActiveVideoId(null);
+
   return (
     <section id="solution" className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,6 +156,28 @@ export default function SolutionSection() {
                     <p className="text-lg text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
+
+                    {feature.videoId && (
+                      <div className="mt-6">
+                        <button
+                          type="button"
+                          onClick={() => setActiveVideoId(feature.videoId ?? null)}
+                          className="group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 px-6 py-3 text-white text-base md:text-lg font-semibold shadow-lg shadow-primary-500/30 ring-1 ring-primary-300/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-primary-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-600"
+                        >
+                          <span className="absolute -inset-1 rounded-full bg-primary-500/30 blur-lg opacity-70 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+                          <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
+                            <svg
+                              className="h-5 w-5 fill-current"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </span>
+                          <span className="relative">{feature.videoLabel ?? "Přehrát video"}</span>
+                        </button>
+                      </div>
+                    )}
 
                     {/* Decorative line */}
                     <motion.div
@@ -205,6 +244,12 @@ export default function SolutionSection() {
           })}
         </div>
       </div>
+
+      <VideoModal
+        videoId={activeVideoId}
+        onClose={handleClose}
+        title="Doplňování pomocí AI – vysvětlení"
+      />
     </section>
   );
 }
