@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getMetadataBase } from "@/app/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "QIK - Zjednodušujeme projektovou dokumentaci ve stavebnictví",
+  metadataBase: getMetadataBase(),
+  title: {
+    default: "Projektová Dokumentace | QIK",
+    template: "%s | QIK",
+  },
+  alternates: {
+    canonical: "/",
+  },
   description:
-    "QIK je nástroj, který využívá AI k rychlejšímu a přesnějšímu vytváření projektové dokumentace podle aktuálních vyhlášek.",
+    "Projektová dokumentace od QIK pro všechny typy staveb. Rychlejší tvorba technických zpráv a dokumentace v souladu s aktuálními vyhláškami.",
+  applicationName: "Projektová Dokumentace",
+  openGraph: {
+    type: "website",
+    locale: "cs_CZ",
+    siteName: "Projektová Dokumentace",
+    url: "/",
+    title: "Projektová Dokumentace | QIK",
+    description:
+      "Projektová dokumentace od QIK pro všechny typy staveb. Rychlejší tvorba technických zpráv a dokumentace v souladu s aktuálními vyhláškami.",
+  },
   manifest: "/site.webmanifest",
   icons: {
     icon: [

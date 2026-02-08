@@ -128,6 +128,26 @@ export default function Footer() {
           </p>
         </motion.div>
       </div>
+
+      <div className="border-t border-gray-800 bg-gray-950/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <a
+            href="https://www.jtc-solutions.cz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto flex w-fit items-center gap-3 text-sm text-gray-400 transition-colors hover:text-white"
+          >
+            <span>Powered by</span>
+            <Image
+              src="/logo-jtc.svg"
+              alt="JTC Solutions"
+              width={56}
+              height={20}
+              className="h-5 w-auto invert"
+            />
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }

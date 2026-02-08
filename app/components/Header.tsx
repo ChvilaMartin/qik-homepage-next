@@ -10,9 +10,9 @@ const navLinks = [
   { href: "/#problem", label: "Problém" },
   { href: "/#solution", label: "Řešení" },
   { href: "/#how-it-works", label: "Jak to funguje" },
-  { href: "/stavba", label: "Stavba" },
   { href: "/#pricing", label: "Ceník" },
   { href: "/kontakt", label: "Kontakt" },
+  { href: "/stavba", label: "Stavba" },
 ];
 
 interface HeaderProps {
