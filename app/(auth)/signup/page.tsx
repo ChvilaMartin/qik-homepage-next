@@ -49,7 +49,7 @@ export default function SignupPage() {
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
-      .trim();
+      .replace(/^-+|-+$/g, '');
     setValue("workspace.slug", slug);
   };
 
@@ -65,6 +65,7 @@ export default function SignupPage() {
     setSubmitError("");
 
     try {
+      data.workspace.name = data.workspace.name.trim();
       const result = await createWorkspace(data);
 
       if (result.success && result.workspaceUrl) {
