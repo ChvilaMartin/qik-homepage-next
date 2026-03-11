@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const footerLinks = [
   { href: "#", label: "Ochrana osobních údajů" },
-  { href: "#", label: "Podmínky používání" },
+  { href: "/podminky-pouzivani", label: "Podmínky používání" },
 ];
 
 export default function Footer() {
