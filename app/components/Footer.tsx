@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const footerLinks = [
-  { href: "#", label: "Ochrana osobních údajů" },
+  { href: "/ochrana-osobnich-udaju", label: "Ochrana osobních údajů" },
   { href: "/podminky-pouzivani", label: "Podmínky používání" },
 ];
 
